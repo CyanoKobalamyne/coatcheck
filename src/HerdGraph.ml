@@ -69,7 +69,7 @@ let rec renumber_edges eiids edges =
 let rec renumber_accesses_helper result ops edges eiids next_eiid =
   match ops with
   | h::t ->
-      let old_eiid = globalID h in
+      let old_eiid = h.globalID in
       let already_exists = IntMap.mem old_eiid eiids in
       let new_eiid = if already_exists then IntMap.find old_eiid eiids
         else next_eiid in

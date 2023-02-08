@@ -119,7 +119,7 @@ let dirtyGhostInstructions h =
 let rec filter_ghosts_helper program =
   match program with
   | h::t ->
-      (match (access h, PipeGraph.getAccessType h) with
+      (match (h.access, PipeGraph.getAccessType h) with
       | (Fence _, _) -> h :: filter_ghosts_helper t
       | (FenceVA (_, _), _) -> h :: filter_ghosts_helper t
       | (Read _, []) ->
@@ -191,7 +191,7 @@ let parse_uarch filename num_cores =
 
 let program_length p = List.fold_left (+) 0 (map List.length p)
 
-let core_count p = fold_left max (map coreID p) 0
+let core_count p = fold_left max (map (fun x -> x.coreID) p) 0
 
 let processor =
   let num_cores =
