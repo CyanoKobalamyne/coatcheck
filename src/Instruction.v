@@ -86,7 +86,7 @@ Definition beq_pte_status
   (a b : PTEStatus)
   : bool :=
   match (a, b) with
-  | (pte a1 a2, pte b1 b2) => andb (eqb a1 b1) (eqb a2 b2)
+  | (pte a1 a2, pte b1 b2) => andb (Bool.eqb a1 b1) (Bool.eqb a2 b2)
   end.
 
 Inductive AccessedStatus : Set :=
