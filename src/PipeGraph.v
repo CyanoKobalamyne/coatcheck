@@ -20,6 +20,8 @@
 (* DEALINGS IN THE SOFTWARE.                                                  *)
 (******************************************************************************)
 
+Require Extraction.
+
 Require Import Arith.
 Require Import List.
 Require Import Ascii.
